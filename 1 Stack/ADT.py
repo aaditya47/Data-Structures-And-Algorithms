@@ -18,20 +18,21 @@ class Stack:
         self.top=-1
     # push function
     def push(self,element):
-        if(self.sz<self.size):
+        if(self.top<=self.size-1):
             self.top+=1
             self.container[self.top]=element
             self.sz+=1
-            print_stack()
+            self.print_stack()
         else:
             print("Stack is full")
     # pop function
     def pop(self):
-        if(self.sz>=1):
+        if(self.top>-1):
             temp=self.container[self.top]
             self.container[self.top]=None
             self.top-=1
-            print_stack()
+            self.sz-=1
+            self.print_stack()
             return temp
         else:
             print("Stack is empty")
@@ -46,9 +47,4 @@ class Stack:
         return self.sz==0
     # print stack function - arbitrary function to help visualizing
     def print_stack(self):
-        print("Stack:")
-        for i in range(self.sz-1,0,-1):
-            if(i==self.sz-1):
-                print(self.container[i]," <-- top")
-            else:
-                print(self.container[i])
+        print(self.container)
